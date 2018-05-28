@@ -24,6 +24,10 @@ public class FactoryConversor implements AbstractFactory{
         switch (type){
             case "b":
                 return new Binario();
+            case "h":
+                return new Hexadecimal();
+            case "o":
+                return new Octa();
         }
         return null;
     }

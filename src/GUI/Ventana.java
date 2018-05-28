@@ -26,7 +26,7 @@ public class Ventana extends JPanel{
     public int WIDTH=300,widthTF=80,widthB=80;
     public int HEIGHT=360,heightTF=30,heightB=30;
     public JTextField textF1,textF2,textF3,textF4;
-    public JButton button1,button2,button3,button4,button5;
+    public JButton button1,button2,button3,button4,button5,button6,button7;
     public JLabel textF5,textF6;
     public Ventana() {
         operacionA=operacionProducer.getOperacion("o");
@@ -36,6 +36,8 @@ public class Ventana extends JPanel{
         Aritmetica multiplicacion=operacionA.getAritmetica("*");
         Aritmetica division=operacionA.getAritmetica("/");
         Conversor binario=operacionC.getConversor("b");
+        Conversor hexa=operacionC.getConversor("h");
+        Conversor octa=operacionC.getConversor("o");
         textF1=new JTextField();
         textF1.setBounds(new Rectangle(50,40,widthTF,heightTF));
         textF2=new JTextField();
@@ -58,6 +60,10 @@ public class Ventana extends JPanel{
         button4.setBounds(new Rectangle(131,131,widthB,heightB));
         button5=new JButton("Binario");
         button5.setBounds(new Rectangle(50,240,widthB,heightB));
+        button6=new JButton("Hexadecimal");
+        button6.setBounds(new Rectangle(131,240,widthB,heightB));
+        button7=new JButton("Octal");
+        button7.setBounds(new Rectangle(50,271,widthB,heightB));
         textF1.setEditable(true);
         textF2.setEditable(true);
         textF3.setEditable(false);
@@ -89,7 +95,22 @@ public class Ventana extends JPanel{
         button5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textF3.setText(String.valueOf(binario.Convertir(Integer.parseInt(textF4.getText()))));
+                textF3.setText(binario.Convertir(Integer.parseInt(textF4.getText()))
+                );
+            }
+        });
+        button6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textF3.setText(hexa.Convertir(Integer.parseInt(textF4.getText()))
+                );
+            }
+        });
+        button7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textF3.setText(octa.Convertir(Integer.parseInt(textF4.getText()))
+                );
             }
         });
         add(textF1);
@@ -98,6 +119,8 @@ public class Ventana extends JPanel{
         add(button3);
         add(button4);
         add(button5);
+        add(button6);
+        add(button7);
         add(textF2);
         add(textF3);
         add(textF4);
